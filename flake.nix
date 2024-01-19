@@ -1,8 +1,8 @@
 {
+  description = "A flake of public packages ready to be used";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
-  description = "miru";
   outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
