@@ -1,18 +1,21 @@
 {
-  description = "A flake of public packages ready to be used";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
-  outputs = { self, nixpkgs }:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-    in
-    rec
-    {
-      packages."${system}".miru = import ./miru.nix {
-        stdenv = pkgs.stdenv;
-        inherit pkgs;
-      };
-    };
+  outputs = {
+    self,
+    nixpkgs,
+  }: let
+    supportedSystems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+    forEachSupportedSystem = f:
+      nixpkgs.lib.genAttrs supportedSystems (system:
+        f {
+          pkgs = import nixpkgs {inherit system;};
+        });
+  in {
+    packages = forEachSupportedSystem ({...}@inputs: {
+      miru = import ./miru.nix inputs;
+      helm-readme-generator = import ./helm-readme-generator.nix inputs;
+    });
+  };
 }

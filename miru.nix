@@ -1,4 +1,4 @@
-{ stdenv, pkgs }:
+{pkgs}:
 pkgs.appimageTools.wrapType2 rec {
   name = "miru";
   pname = "miru";
@@ -9,23 +9,21 @@ pkgs.appimageTools.wrapType2 rec {
     hash = "sha256-Ntziq6MFkw4nif9jKifmkXjhHVcwgy+9ckqDXkoYG5M=";
   };
 
-  extraInstallCommands =
-    let
-      contents = pkgs.appimageTools.extract { inherit pname version src; };
-    in
-    ''
-      install -m 444 -D ${contents}/miru.desktop -t $out/share/applications
-      substituteInPlace $out/share/applications/miru.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
-      cp -r ${contents}/usr/share/icons $out/share
-    '';
+  extraInstallCommands = let
+    contents = pkgs.appimageTools.extract {inherit pname version src;};
+  in ''
+    install -m 444 -D ${contents}/miru.desktop -t $out/share/applications
+    substituteInPlace $out/share/applications/miru.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
+    cp -r ${contents}/usr/share/icons $out/share
+  '';
 
   meta = with pkgs.lib; {
     name = "miru";
     description = "Bittorrent streaming software for cats.";
     homepage = "https://github.com/ThaUnknown/miru";
     license = licenses.gpl3;
-    maintainers = with maintainers; [ karitham ];
-    platforms = [ "x86_64-linux" ];
+    maintainers = with maintainers; [karitham];
+    platforms = ["x86_64-linux"];
     mainProgram = "miru";
   };
 }
