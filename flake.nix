@@ -13,9 +13,10 @@
           pkgs = import nixpkgs {inherit system;};
         });
   in {
-    packages = forEachSupportedSystem ({...}@inputs: {
+    packages = forEachSupportedSystem ({...} @ inputs: {
       miru = import ./miru.nix inputs;
       helm-readme-generator = import ./helm-readme-generator.nix inputs;
+      df-pv = import ./df-pv.nix inputs;
     });
   };
 }

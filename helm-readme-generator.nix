@@ -1,5 +1,5 @@
 {pkgs}:
-  pkgs.buildNpmPackage {
+pkgs.buildNpmPackage {
   pname = "helm-readme-generator";
   version = "2.6.1";
 
