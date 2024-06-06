@@ -1,0 +1,11 @@
+{
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "cmd": "tfmt ${file}",
+                "isAsync": true,
+                "match": ".typ"
+            },
+        ]
+    }
+}

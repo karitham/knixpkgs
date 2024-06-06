@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "emeraldwalk.runonsave",
+        "mkhl.direnv",
+        "mgt19937.typst-preview",
+        "nvarner.typst-lsp"
+    ]
+}

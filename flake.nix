@@ -18,5 +18,15 @@
       helm-readme-generator = import ./helm-readme-generator.nix inputs;
       df-pv = import ./df-pv.nix inputs;
     });
+
+    templates = {
+      typst = {
+        description = "A template for a typst project";
+        path =./typst;
+        welcomeText = ''
+          Welcome to typst!
+        '';
+      };
+    };
   };
 }
