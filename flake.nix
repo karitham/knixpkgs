@@ -20,13 +20,8 @@
     });
 
     templates = {
-      typst = {
-        description = "A template for a typst project";
-        path =./typst;
-        welcomeText = ''
-          Welcome to typst!
-        '';
-      };
+      typst.path = ./typst;
+      k8s.path = ./k8s;
     };
   };
 }
