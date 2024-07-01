@@ -1,19 +1,17 @@
 # knixpkgs
 
-My packaged nixpkgs (can't bother contributing to the main repo)
+## Usage as a flake
 
-Currently contains:
+[![FlakeHub](https://img.shields.io/endpoint?url=https://flakehub.com/f/Karitham/knixpkgs/badge)](https://flakehub.com/flake/Karitham/knixpkgs)
 
-- miru
+Add knixpkgs to your `flake.nix`:
 
-## Install
+```nix
+{
+  inputs.knixpkgs.url = "https://flakehub.com/f/Karitham/knixpkgs/*.tar.gz";
 
-```sh
-nix profile install github:karitham/knixpkgs#miru
-```
-
-## Remove
-
-```sh
-nix profile remove packages.x86_64-linux.miru
+  outputs = { self, knixpkgs }: {
+    # Use in your outputs
+  };
+}
 ```

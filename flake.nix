@@ -20,8 +20,14 @@
     });
 
     templates = {
-      typst.path = ./typst;
-      k8s.path = ./k8s;
+      typst = {
+        path =./typst;
+        description = "typst";
+      };
+      k8s = {
+        path =./k8s;
+        description = "simple kubernetes ready env";
+      };
     };
   };
 }

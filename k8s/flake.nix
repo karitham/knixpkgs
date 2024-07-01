@@ -16,12 +16,9 @@
           buildInputs = with pkgs; [
             kubernetes-helm
             kubernetes-helmPlugins.helm-unittest
-            helmfile
             kubectx
             kubectl
-            k9s
             sops
-            yq
           ];
         };
       }
