@@ -13,19 +13,21 @@
           pkgs = import nixpkgs {inherit system;};
         });
   in {
-    packages = forEachSupportedSystem ({...} @ inputs: {
-      miru = import ./miru.nix inputs;
-      helm-readme-generator = import ./helm-readme-generator.nix inputs;
-      df-pv = import ./df-pv.nix inputs;
+    packages = forEachSupportedSystem ({...} @ inputs: let
+      callPackage = inputs.pkgs.callPackage;
+    in {
+      miru = callPackage ./miru.nix {};
+      helm-readme-generator = callPackage ./helm-readme-generator.nix {};
+      df-pv = callPackage ./df-pv.nix {};
+      tidb-tools = callPackage ./tidb-tools.nix {};
     });
-
     templates = {
       typst = {
-        path =./typst;
+        path = ./typst;
         description = "typst";
       };
       k8s = {
-        path =./k8s;
+        path = ./k8s;
         description = "simple kubernetes ready env";
       };
     };
