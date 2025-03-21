@@ -2,11 +2,11 @@
 pkgs.appimageTools.wrapType2 rec {
   name = "miru";
   pname = "miru";
-  version = "5.1.0";
+  version = "5.5.10";
 
   src = pkgs.fetchurl {
     url = "https://github.com/ThaUnknown/miru/releases/download/v${version}/linux-Miru-${version}.AppImage";
-    hash = "sha256-N9I5YNFIfBmANCnJA3gUmgq04cc5LLfOsYiEdwJupf8=";
+    hash = "sha256-nLPqEI6u5NNQ/kPbXRWPG0pIwutKNK2J8JeTPN6wHlg=";
   };
 
   extraInstallCommands = let
