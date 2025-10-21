@@ -12,5 +12,6 @@
   in {
     packages = forEachSupportedSystem ({pkgs, ...}: pkgs.callPackage ./packages {});
     templates = import ./templates;
+    overlays.default = final: prev: prev.callPackages ./packages {};
   };
 }
