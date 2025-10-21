@@ -1,9 +1,12 @@
-{pkgs}:
-pkgs.buildGoModule rec {
+{
+  buildGoModule,
+  fetchFromGitHub,
+}:
+buildGoModule rec {
   pname = "df-pv";
   name = "df-pv";
   version = "v0.3.0";
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "yashbhutwala";
     repo = "kubectl-df-pv";
     rev = "${version}";

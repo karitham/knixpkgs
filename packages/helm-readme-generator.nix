@@ -1,9 +1,13 @@
-{pkgs}:
-pkgs.buildNpmPackage {
+{
+  buildNpmPackage,
+  fetchFromGitHub,
+  lib,
+}:
+buildNpmPackage {
   pname = "helm-readme-generator";
   version = "2.6.1";
 
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "bitnami";
     repo = "readme-generator-for-helm";
     rev = "2.6.1";
@@ -13,7 +17,7 @@ pkgs.buildNpmPackage {
   npmDepsHash = "sha256-baRBchp4dBruLg0DoGq7GsgqXkI/mBBDowtAljC2Ckk=";
   dontNpmBuild = true;
 
-  meta = with pkgs.lib; {
+  meta = with lib; {
     name = "helm-readme-generator";
     description = "Auto generate READMEs for Helm Charts";
     homepage = "https://github.com/bitnami/readme-generator-for-helm";
