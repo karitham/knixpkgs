@@ -7,7 +7,7 @@
     forEachSupportedSystem = f:
       nixpkgs.lib.genAttrs supportedSystems (system:
         f {
-          pkgs = import nixpkgs {inherit system;};
+          pkgs = nixpkgs.legacyPackages.${system};
         });
   in {
     packages = forEachSupportedSystem ({pkgs, ...}: pkgs.callPackage ./packages {});
