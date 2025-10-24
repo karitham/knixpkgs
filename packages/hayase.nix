@@ -49,6 +49,9 @@ stdenv.mkDerivation rec {
     cp -r opt/Hayase $out/share/hayase
     cp -r usr/share/* $out/share/
 
+    # Patch the desktop file to use the correct binary path
+    sed -i "s|/opt/Hayase/hayase|$out/bin/hayase|" $out/share/applications/*.desktop
+
     makeWrapper $out/share/hayase/hayase $out/bin/hayase \
       --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath buildInputs}" \
       --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland" \
